@@ -12,11 +12,11 @@ import NoMatch from './pages/no-match';
 export default class App extends Component {
   render() {
     return (
-      <div className='app'>
+      <div className='container'>
         <Router>
           <div>
             <NavContainer />
-            <Switch> {`this is a switch, goes down until it finds a match`}
+            <Switch> {/*`this is a switch, goes down until it finds a match`*/}
               <Route exact path='/' component={Home} />
               <Route path='/about-me' component={About} />
               <Route path='/contact' component={Contact} />

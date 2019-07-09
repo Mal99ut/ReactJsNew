@@ -1,5 +1,12 @@
 body {
 margin: 0px;
 font-family: 'Catamaran', sans-serif;
+background-image: url(../images/gplaypattern.png);
+background-repeat: repeat;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr;
 }
 
