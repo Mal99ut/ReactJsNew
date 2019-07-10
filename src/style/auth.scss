@@ -1,0 +1,15 @@
+.auth-page-wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: calc(100vh - 74px);
+
+    .left-column-auth{
+        background-size: cover;
+    }
+
+    .right-column-auth{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
