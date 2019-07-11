@@ -24,12 +24,15 @@ export default class Login extends React.Component {
             { withCredentials: true } //t.then(Response)his is saying im authorizing you to send up a cookie to the api to see if the user can get in
         )
             .then(response => { //this is showing the response, if you are logged in or notF
-                if(response.data.status  === 'created'){
+                if (response.data.status === 'created') {
                     console.log("you can come in...")
+                    this.props.handleSuccesfulAuth();
                 } else {
                     this.setState({
                         errorText: "Wrong Email Or Password, Please Try Again"
-                    })
+                    });
+                    this.props.handleUnSuccesfulAuth();
+
                 }
             }).catch(error => {
                 console.log("some error occured", error)
@@ -41,9 +44,10 @@ export default class Login extends React.Component {
     }
     handleChange(event) {
         this.setState({
-            [event.target.name]: event.target.value
+            [event.target.name]: event.target.value,
+            errorText: ""
         })
-    }                    //shortcut for if prop.name = email, set to email same for all props
+    }        //shortcut for if prop.name = type of input, set to input info to typex     same for all props
     render() {
         return (
             <div>
