@@ -9,6 +9,7 @@ import PortfolioDetail from "./portfolio/portfolio-detail";
 import Auth from "./pages/auth";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import NoMatch from './pages/no-match';
+import BlogPost from './pages/blog-post.js'
 
 export default class App extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ export default class App extends Component {
     };
     this.handleSuccesfulLogin = this.handleSuccesfulLogin.bind(this)
     this.handleUnSuccesfulLogin = this.handleUnSuccesfulLogin.bind(this)
+    this.handleSuccesfulLogout = this.handleSuccesfulLogout.bind(this)
   }
   handleSuccesfulLogin() {
     this.setState({
@@ -27,6 +29,11 @@ export default class App extends Component {
   }
 
   handleUnSuccesfulLogin() {
+    this.setState({
+      loggedInStatus: "NOT_LOGGED_IN"
+    });
+  }
+  handleSuccesfulLogout() {
     this.setState({
       loggedInStatus: "NOT_LOGGED_IN"
     });
@@ -49,17 +56,25 @@ export default class App extends Component {
   componentDidMount() {
     this.checkLoginStatus();
   }
+  authorizedPages() {
+    return [
+      <Route path='/create-blog-post' component={BlogPost} />
+    ]
+  }
   render() {
     return (
       <div className='container'>
         <Router>
           <div>
-            <NavContainer loggedInStatus={this.state.loggedInStatus} />
-            <h2>{this.state.loggedInStatus}</h2>
+            <NavContainer 
+            loggedInStatus={this.state.loggedInStatus} //passing in these functions as props directly
+            handleSuccesfulLogout={this.handleSuccesfulLogout}
+            />
             <Switch> {/*`this is a switch, goes down until it finds a match`*/}
               <Route exact path='/' component={Home} />
+              <Route exact path='/blog' component={Blog} />
               <Route path='/about-me' component={About} />
-              <Route path='/blog' component={Blog} />
+              {this.state.loggedInStatus === "LOGGED_IN" ? (this.authorizedPages()) : null};
               <Route
                 path="/admin-login"
                 render={props => (  //rendering is advanced for a first react course, instead of passing a normal prop, we are doing a normal prop, rendering it, telling it to call auth and render that and allow it access to everyting it should have and ovveride it and pass in your own functions

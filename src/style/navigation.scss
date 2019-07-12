@@ -3,7 +3,41 @@
     justify-content: space-between;
     padding:20px;
     background-color:#ffffff;
-    
+    box-shadow: inset 0px -10px 13px -7px rgba(0,0,0,0.75);
+
+    .right-side{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+        height: 22px;
+        border-bottom: 1px solid transparent;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        border-top: 1px solid transparent;
+        transition: .7s;
+        border-radius: 1px;
+        margin-right: 20px;
+        text-transform: uppercase;
+        font-size:0.9rem;
+        padding:5px;
+
+        a {
+            color: $grey; 
+            text-decoration: none;
+            font-size:1em;
+            &:hover{
+                color:#646464;
+            }
+        }
+        &:hover{
+            background-color: #e9eaec;
+            border-top: #e4eeff;
+            border-bottom: #e4eeff;
+            box-shadow: -2px 2px 2px 0px rgba(0,0,0,0.75);
+            cursor: pointer;
+        }
+    }
+
     .left-side{
         display: flex;
     }
@@ -19,6 +53,7 @@
         text-transform: uppercase;
         font-size:0.9rem;
         padding:5px;
+        
         
         a {
             color: $grey; 

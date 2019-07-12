@@ -5,12 +5,14 @@
 
     .left-column-auth{
         background-size: cover;
+        box-shadow: inset -60px 0px 50px -40px rgb(0, 0, 0);
+
     }
 
     .right-column-auth{
         display: flex;
         justify-content: center;
         align-items: center;
-        
+        flex-direction: column
     }
 }

@@ -10,11 +10,13 @@
         border-radius:2px;
         text-align: center;
         height: 30px;
+        display:flex;
+        align-content: center;
+        padding:5px;
     }
-    
-    .link-no-match a{
+    .link-no-match a {
         text-decoration: none;
-        color:white;
+        color:rgb(156, 156, 156);
     }
 
 
